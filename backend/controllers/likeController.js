@@ -1,7 +1,11 @@
 import Post from '../models/Post.js';
+import post from "../models/Post.js";
 
 // ✅ Лайк/дизлайк поста
 export const toggleLike = async (req, res) => {
+    post.save = async function () {
+
+    };
     try {
         const { id } = req.params; // ID поста
         const userId = req.user.userId; // Поточний користувач
