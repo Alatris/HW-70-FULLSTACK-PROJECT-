@@ -1,0 +1,15 @@
+// Базові стилі
+@use "base/reset";
+@use "base/typography";
+
+// Компоненти
+@use "components/buttons";
+@use "components/forms";
+@use "components/navbar";
+
+// Сторінки
+@use "pages/register";
+@use "pages/login";
+@use "pages/home";
+@use "pages/profile";
+@use "pages/chat";
