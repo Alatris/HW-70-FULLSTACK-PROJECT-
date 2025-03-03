@@ -6,7 +6,7 @@ export const followUser = async (req, res) => {
         const { id } = req.params; // ID користувача, на якого підписуємось
         const currentUser = await User.findById(req.user.userId); // Поточний користувач
 
-        if (!currentUser) return res.status(404).json({ message: 'Користувач не знайдений' });
+        if (!currentUser) return res.status(404).json({ message: 'Користувач не знайдено або не існує' });
 
         if (currentUser.following.includes(id)) {
             return res.status(400).json({ message: 'Ви вже підписані на цього користувача' });
@@ -28,7 +28,7 @@ export const unfollowUser = async (req, res) => {
         const { id } = req.params;
         const currentUser = await User.findById(req.user.userId);
 
-        if (!currentUser) return res.status(404).json({ message: 'Користувач не знайдений' });
+        if (!currentUser) return res.status(404).json({ message: 'Користувача не знайдено або не існує' });
 
         if (!currentUser.following.includes(id)) {
             return res.status(400).json({ message: 'Ви не підписані на цього користувача' });

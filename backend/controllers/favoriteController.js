@@ -8,7 +8,7 @@ export const toggleFavorite = async (req, res) => {
         const userId = req.user.userId; // Поточний користувач
 
         const user = await User.findById(userId);
-        if (!user) return res.status(404).json({ message: 'Користувач не знайдено' });
+        if (!user) return res.status(404).json({ message: 'Користувача не знайдено' });
 
         const post = await Post.findById(id);
         if (!post) return res.status(404).json({ message: 'Пост не знайдено' });
@@ -34,7 +34,7 @@ export const getFavorites = async (req, res) => {
         const userId = req.user.userId; // Поточний користувач
 
         const user = await User.findById(userId).populate('favorites');
-        if (!user) return res.status(404).json({ message: 'Користувач не знайдено' });
+        if (!user) return res.status(404).json({ message: 'Користувача не знайдено' });
 
         res.json(user.favorites);
     } catch (error) {

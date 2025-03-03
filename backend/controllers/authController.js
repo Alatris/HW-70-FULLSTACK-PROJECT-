@@ -13,13 +13,14 @@ export const register = async (req, res, next) => {
         // Перевірка, чи існує такий email або username
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return res.status(400).json({ message: 'Такий email вже існує' });
+            return res.status(400).json({ message: 'Такий email вже зареєстровано' });
         }
 
         const existingUsername = await User.findOne({ username });
         if (existingUsername) {
             return res.status(400).json({ message: 'Такий username вже зайнятий' });
         }
+        // хотів написати - "користувач із таким ім'ям же зареєтровано", але не вийшло
 
         // Хешування пароля
         const hashedPassword = await bcrypt.hash(password, 10);
